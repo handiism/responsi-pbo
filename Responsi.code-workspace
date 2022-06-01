@@ -1,0 +1,18 @@
+{
+	"folders": [
+		{
+			"path": "../../.."
+		},
+		{
+			"path": "../../../../../Developments/clone/Project-Notes_app"
+		}
+	],
+	"settings": {
+		"java.project.referencedLibraries": {
+			"include": [
+				"lib/**/*.jar",
+				"lib/*.jar"
+			]
+		}
+	}
+}
