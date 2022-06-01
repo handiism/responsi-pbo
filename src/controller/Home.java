@@ -18,6 +18,7 @@ public class Home {
   public Home(TransaksiQuery query, view.Home view) {
     this.query = query;
     this.view = view;
+    this.view.setTitle("Transaksi");
     initController();
 
     EventQueue.invokeLater(new Runnable() {
@@ -84,16 +85,16 @@ public class Home {
     });
 
     view.getButtonUbah().addActionListener((l) -> {
-      String barang = view.getTextFieldBarang().getText();
-      String kasir = view.getTextFieldKasir().getText();
+      transaksi.setBarang(view.getTextFieldBarang().getText());
+      transaksi.setKasir(view.getTextFieldKasir().getText());
       try {
-        int kuantitas =
-            Integer.parseInt(view.getTextFieldKuantitas().getText());
-        int hargaSatuan =
-            Integer.parseInt(view.getTextFieldHargaSatuan().getText());
-        int diskon = Integer.parseInt(view.getTextFieldDiskon().getText());
-        Transaksi transaksi =
-            query.insert(barang, kasir, kuantitas, hargaSatuan, diskon);
+        transaksi.setKuantitas(
+            Integer.parseInt(view.getTextFieldKuantitas().getText()));
+        transaksi.setHargaSatuan(
+            Integer.parseInt(view.getTextFieldHargaSatuan().getText()));
+        transaksi.setDiskon(
+            Integer.parseInt(view.getTextFieldDiskon().getText()));
+        transaksi = query.update(transaksi);
         if (transaksi == null) {
           JOptionPane.showMessageDialog(null, "Gagal mengubah transaksi");
         } else {

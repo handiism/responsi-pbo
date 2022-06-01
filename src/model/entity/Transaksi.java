@@ -1,5 +1,7 @@
 package model.entity;
 
+import helper.Helper;
+
 public class Transaksi {
   private String id;
   private String barang;
@@ -28,7 +30,7 @@ public class Transaksi {
     this.kuantitas = kuantitas;
     this.hargaSatuan = hargaSatuan;
     this.diskon = diskon;
-    this.hargaTotal = hargaSatuan * kuantitas * ((100 - diskon) / 100);
+    this.hargaTotal = Helper.hitungHargaTotal(hargaSatuan, kuantitas, diskon);
   }
 
   public Transaksi() {}
@@ -59,7 +61,10 @@ public class Transaksi {
 
   public void setDiskon(int diskon) { this.diskon = diskon; }
 
-  public int getHargaTotal() { return hargaTotal; }
+  public int getHargaTotal() {
+    hargaTotal = Helper.hitungHargaTotal(hargaSatuan, kuantitas, diskon);
+    return hargaTotal;
+  }
 
   public void setHargaTotal(int hargaTotal) { this.hargaTotal = hargaTotal; }
 }
